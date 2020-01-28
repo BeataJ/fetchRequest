@@ -3,11 +3,13 @@ fetch("https://swapi.co/api/planets/")
     if (!response.ok) {
       throw new Error(`Status code Error: ${response.status}`);
     } else {
-      response.json().then(data => {
-        for (let planet of data.results) {
-          console.log(planet.name);
-        }
-      });
+      return response.json();
+    }
+  })
+  .then(data => {
+    for (let planet of data.results) {
+      console.log(planet);
+      console.log(planet.name);
     }
   })
   .catch(err => {
