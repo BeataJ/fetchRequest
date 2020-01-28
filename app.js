@@ -11,6 +11,6 @@ fetch("https://swapi.co/api/planets/")
     }
   })
   .catch(err => {
-    console.log("SOMETHING WENT WRONG WITH FETECH");
+    console.log("SOMETHING WENT WRONG WITH FETCH");
     console.log(err);
   });
