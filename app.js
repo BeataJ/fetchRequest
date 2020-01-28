@@ -1,7 +1,7 @@
 fetch("https://swapi.co/api/planets/")
   .then(response => {
     if (!response.ok) {
-      console.log("ERROR NOT STATUS 200", response.status);
+      throw new Error(`Status code Error: ${response.status}`);
     } else {
       response.json().then(data => {
         for (let planet of data.results) {
