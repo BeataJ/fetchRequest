@@ -7,10 +7,7 @@ fetch("https://swapi.co/api/planets/")
     }
   })
   .then(data => {
-    for (let planet of data.results) {
-      console.log(planet);
-      console.log(planet.name);
-    }
+    console.log(data.results[0].films[0]);
   })
   .catch(err => {
     console.log("SOMETHING WENT WRONG WITH FETCH");
