@@ -11,27 +11,20 @@ const printPlanets = data => {
   for (let planet of data.results) {
     console.log(planet.name);
   }
-  // const p = new Promise((resolve, reject) => {
-  //   resolve(data);
-  // });
-  // return p;
 
-  return Promise.resolve(data);
+  return Promise.resolve(data.next);
+};
+
+const fetchNextPlanets = url => {
+  return fetch(url);
 };
 
 fetch("https://swapi.co/api/planets/")
   .then(checkStatusAndParse)
   .then(printPlanets)
-  .then(data => {
-    const nextURL = data.next;
-    return fetch(nextURL);
-  })
+  .then(fetchNextPlanets)
   .then(checkStatusAndParse)
   .then(printPlanets)
-  .then(data => {
-    const nextURL = data.next;
-    return fetch(nextURL);
-  })
   .catch(err => {
     console.log("SOMETHING WENT WRONG WITH FETCH");
     console.log(err);
