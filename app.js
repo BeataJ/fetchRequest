@@ -7,6 +7,7 @@ fetch("https://swapi.co/api/planets/")
     }
   })
   .then(data => {
+    console.log("FETCHED ALL PLANETS");
     const filmUrl = data.results[0].films[0];
     return fetch(filmUrl);
   })
@@ -18,6 +19,7 @@ fetch("https://swapi.co/api/planets/")
     }
   })
   .then(data => {
+    console.log("FETCHED FIRST FILM< BASE OFF FIRST PLANET");
     console.log(data);
   })
   .catch(err => {
