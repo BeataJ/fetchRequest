@@ -20,7 +20,7 @@ fetch("https://swapi.co/api/planets/")
   })
   .then(data => {
     console.log("FETCHED FIRST FILM< BASE OFF FIRST PLANET");
-    console.log(data);
+    console.log(data.title);
   })
   .catch(err => {
     console.log("SOMETHING WENT WRONG WITH FETCH");
