@@ -7,7 +7,7 @@ const checkStatusAndParse = response => {
 };
 
 const printPlanets = data => {
-  console.log("FETCHED ALL PLANETS(first 10)");
+  console.log("FETCHED ALL PLANETS( 10)");
   for (let planet of data.results) {
     console.log(planet.name);
   }
@@ -15,11 +15,14 @@ const printPlanets = data => {
   return Promise.resolve(data.next);
 };
 
-const fetchNextPlanets = url => {
+const fetchNextPlanets = (url = "https://swapi.co/api/planets/") => {
   return fetch(url);
 };
 
-fetch("https://swapi.co/api/planets/")
+fetchNextPlanets()
+  .then(checkStatusAndParse)
+  .then(printPlanets)
+  .then(fetchNextPlanets)
   .then(checkStatusAndParse)
   .then(printPlanets)
   .then(fetchNextPlanets)
