@@ -1,11 +1,13 @@
+const checkStatusAndParse = response => {
+  if (!response.ok) {
+    throw new Error(`Status code Error: ${response.status}`);
+  } else {
+    return response.json();
+  }
+};
+
 fetch("https://swapi.co/api/planets/")
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`Status code Error: ${response.status}`);
-    } else {
-      return response.json();
-    }
-  })
+  .then(checkStatusAndParse)
   .then(data => {
     console.log("FETCHED ALL PLANETS(first 10)");
     for (let planet of data.results) {
